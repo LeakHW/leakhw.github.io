@@ -561,4 +561,19 @@ let downloadUrl = 'https://github.com/LeakHW/Extension/releases/latest';
         .download-card { padding: 2rem; }
         .download-info { flex-direction: column; text-align: center; }
     }
+
+    /* iOS Safari fix for scroll breaking */
+    @supports (-webkit-touch-callout: none) {
+        .gradient-orb {
+            position: absolute !important; /* stop fixed repaint bug */
+            filter: blur(50px) !important; /* reduce heavy blur */
+            animation: none !important; /* disable animation causing glitches */
+            transform: translateZ(0);
+            will-change: transform;
+        }
+    
+        .gradient-bg {
+            position: absolute !important; /* prevent layered fixed issues */
+        }
+    }
 </style>
